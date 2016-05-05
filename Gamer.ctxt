@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.params=ballX\ ballY
+comment0.target=Gamer(int,\ int)
+comment0.text=\r\n\ Default\ constructor\ for\ objects\ of\ class\ Gamer\r\n
+comment1.params=g2
+comment1.target=void\ draw(java.awt.Graphics2D)
+comment2.params=X\ Y
+comment2.target=void\ setBall(int,\ int)
+comment3.params=xChange\ yChange
+comment3.target=void\ moveBall(int,\ int)
+comment4.params=level
+comment4.target=void\ setSquares(int)
+comment5.params=level
+comment5.target=void\ setEverything(int)
+numComments=6
