@@ -13,9 +13,10 @@ public class GamerPanel extends JPanel
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(900, 900));
         
-        game = new Gamer(450, 450);
-        levelBeaten = true;
+        game = new Gamer(310, 640);
+        levelBeaten = false;
         level = 1;
+        game.setSquares(level);
         
         setFocusable(true);
         addKeyListener(new KeyStrokeListener());
@@ -65,6 +66,7 @@ public class GamerPanel extends JPanel
                     levelBeaten = false;
                 }
             }
+            repaint();
         }
 
         public void keyTyped(KeyEvent event) {}

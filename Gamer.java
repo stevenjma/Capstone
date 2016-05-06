@@ -19,7 +19,7 @@ public class Gamer
     private int x;
     private int y;
     
-    private boolean [][] blackSquares;
+    private Rectangle [][] blackSquares;
 
     /**
      * Default constructor for objects of class Gamer
@@ -28,7 +28,7 @@ public class Gamer
     {
         setBall(ballX,ballY);
         color = Color.RED;
-        blackSquares = new boolean[5][5];
+        blackSquares = new Rectangle[10][10];
     }
 
     public void draw(Graphics2D g2)
@@ -39,10 +39,10 @@ public class Gamer
         g2.setColor(Color.BLACK);
         for (int i = 0; i < blackSquares.length; i++){
             for (int j = 0; j < blackSquares[0].length; j++){
-                if (blackSquares[i][j])
+                if (blackSquares[i][j] != null)
                 {
-                    Rectangle r = new Rectangle(180, 180, (180 * i), (180 * j));
-                    g2.draw(r);
+                    g2.draw(blackSquares[i][j]);
+                    g2.fill(blackSquares[i][j]);
                 }
             }
         }
@@ -81,10 +81,8 @@ public class Gamer
             {
                 for (int j = 0; j < blackSquares[0].length; j++)
                 {
-                    if (i == 0 && j == 0){
-                        blackSquares[i][j] = true;
-                    }
-                    else{blackSquares[i][j] = false;
+                    if ((i < 7 && i > 2) && (j < 7 && j > 2)){
+                        blackSquares[i][j] = new Rectangle((100 * i), (100 * j), 100, 100);
                     }
                 }
             }
@@ -95,5 +93,20 @@ public class Gamer
         else
         {
         }
+    }
+    
+    public boolean checkCollision()
+    {
+        boolean collided = false;
+        for (int i = 0; i < blackSquares.length; i++)
+        {
+            for (int j = 0; j < blackSquares[0].length; j++)
+            {
+                if (circle.intersects(blackSquares[i][j].getX(), blackSquares[i][j].getY(),blackSquares[i][j].getWidth(),blackSquares[i][j].getHeight())){
+                    collided = true;
+                }
+            }
+        } 
+        return collided;
     }
 }
