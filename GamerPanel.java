@@ -5,17 +5,19 @@ import java.awt.event.*;
 public class GamerPanel extends JPanel
 {  
     private Gamer game;
-    private boolean levelBeaten;
     private int level;
+    private int xChange;
+    private int yChange;
     
     public GamerPanel()
     {
         setBackground(Color.WHITE);
         setPreferredSize(new Dimension(900, 900));
         
-        game = new Gamer(310, 640);
-        levelBeaten = false;
-        level = 1;
+        game = new Gamer();
+        level = 3;
+        xChange = 3;
+        yChange = 3;
         game.setSquares(level);
         
         setFocusable(true);
@@ -43,28 +45,33 @@ public class GamerPanel extends JPanel
             String key = KeyStroke.getKeyStrokeForEvent(event).toString().replace("pressed ", ""); 
             if (key.equals("DOWN"))
             {
-                moveBall(0, 2);            
+                moveBall(0, yChange);
             }
             else if (key.equals("UP"))
             {
-                moveBall(0, -2);            
+                moveBall(0, -yChange);            
             }
             else if (key.equals("LEFT"))
             {
-                moveBall(-2, 0);            
+                moveBall(-xChange, 0);            
             }
             else if (key.equals("RIGHT"))
             {
-                moveBall(2, 0);            
+                moveBall(xChange, 0);            
             }
             else if (key.equals("ENTER"))
             {
-                if (levelBeaten)
+                if (game.checkVictory())
                 {
-                    game.setSquares(level);
                     level++;
-                    levelBeaten = false;
+                    game.setSquares(level);
+                    xChange += 5;
+                    yChange += 5;
                 }
+            }
+            if (game.checkCollision())
+            {
+                game.resetBall();
             }
             repaint();
         }
