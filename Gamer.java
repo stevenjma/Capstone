@@ -127,7 +127,7 @@ public class Gamer
         }
         else
         {
-            initialX = 900;
+            initialX = 0;
             initialY = 900;
             resetBall();
             initialOtherX = 950;
@@ -136,11 +136,11 @@ public class Gamer
             {
                 for (int j = 0; j < blackSquares[0].length; j++)
                 {
-                    if (i % 2 != 0 && j < 9)
+                    if (i % 4 == 0 && (j > 0 && j < 9))
                     {
                         blackSquares[i][j] = new Rectangle((100 * i), (100 * j), 100, 100);
                     }
-                    else if (i%2 == 0 && j > 0)
+                    else if (i % 2 == 0 && (j > 0 && j < 9))
                     {
                         blackSquares[i][j] = new Rectangle((100 * i), (100 * j), 100, 100);
                     }

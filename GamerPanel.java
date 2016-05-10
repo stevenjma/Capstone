@@ -15,7 +15,7 @@ public class GamerPanel extends JPanel
         setPreferredSize(new Dimension(900, 900));
         
         game = new Gamer();
-        level = 3;
+        level = 1;
         xChange = 3;
         yChange = 3;
         game.setSquares(level);
